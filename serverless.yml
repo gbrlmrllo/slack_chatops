@@ -52,7 +52,16 @@ functions:
           path: slack/message
           method: post
     environment:
-      SLACK_API_TOKEN: xoxb-230929704613-909871252209-ipUy47q4Vxd7leHIuZrFrRAq
+      SLACK_API_TOKEN: ${env:SLACK_API_TOKEN}
+
+  production_status:
+    handler: handler.production_status
+    events:
+      - http:
+          path: slack/production-status
+          method: get
+    environment:
+      SLACK_API_TOKEN: ${env:SLACK_API_TOKEN}
 
 # you can add CloudFormation resource templates here
 #resources:
